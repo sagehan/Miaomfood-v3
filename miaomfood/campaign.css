@@ -1,0 +1,84 @@
+/**Typesetting
+ */
+h1 { line-height:var(--s2); }
+article p { line-height:var(--s1); white-space: unset; text-wrap: balance; }
+article p::first-letter { font-size:var(--s1); color: oklch(from var(--activity_bg) calc(l - 15) c h); }
+article * { max-inline-size: none; }
+.this\.campaign section > :last-child::after { content: '❦'; font-size: var(--s1); }
+
+/**Layout
+ */
+:has(> .this\.campaign) {
+  padding: .5em;
+  display: flex;
+  flex-flow: column-reverse;
+  justify-content: center;
+  gap:calc(var(--grid-gutter) * 1);
+}
+
+.this\.campaign > section {
+  z-index: 0;
+  inline-size: max-content;
+  block-size: var(--banner-block-size);
+  padding: var(--padding-inline) .5em;
+  align-items: center;
+  gap: var(--grid-gutter);
+
+  > h1 ~ * {display: contents;}
+  > h1 ~ * > * {max-inline-size:22ic; max-block-size:var(--banner-block-size);}
+  > h1 ~ * > * figcaption {display: none;}
+  figure img {block-size:100%;}
+}
+
+.this\.campaign > :first-child  {
+  margin-block-start: clamp((var(--banner-block-size) + var(--grid-gutter)) * -1, var(--bp_m) * 99999, 0px);
+  transform: translateY(calc(
+    50cqi - var(--padding-inline)));
+  /* will-change: transform; */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: start;
+
+  &::before {content:"";block-size:100%;inline-size:0;} /* simulate <hr> */
+  & > :first-child {order:-1;}
+}
+
+.this\.campaign > :last-child {
+  transform: translateY(calc(
+    -100% + 50cqi + (var(--padding-inline) + var(--stamp-size)/1.3))); /*TODO: eliminate dirty number 1.3 */
+  /* will-change: transform; */
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+/**Appearance
+ */
+.this\.campaign figure img {
+  border: var(--s-2) solid oklch(96% 0 0);
+  box-shadow: var(--shadowy, var(--shadow1));
+}
+
+/**Animation
+ */
+.this\.campaign > :first-child {
+  > h1, article > *, .gallery > * {
+    z-index:calc(100000 * (1 - var(--y))); /*TODO: play with 'Position-Driven-Styles'(https://kizu.dev/position-driven-styles/) */
+    animation: y-lerp linear reverse both;
+    animation-timeline: view();
+    animation-range: cover;
+  }
+}
+
+@keyframes move-up   { to {transform:translateY(-100%);} }
+@keyframes move-down { to {transform:translateY(350%);} }
+
+.this\.campaign > :first-child {
+  animation: move-up linear forwards;
+animation-timeline: scroll(root inline);
+}
+
+.this\.campaign > :last-child {
+  animation: move-down linear forwards;
+animation-timeline: scroll(root inline);
+}

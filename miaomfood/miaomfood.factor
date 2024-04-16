@@ -19,10 +19,18 @@ TUPLE: main-dispatcher < dispatcher ;
 : <main-page> ( -- responder )
     <page-action> { main-dispatcher "app" } >>template ;
 
+: <banner> ( -- responder )
+    <page-action> { main-dispatcher "banner" } >>template ;
+
+: <campaign> ( -- responder )
+    <page-action> { main-dispatcher "campaign" } >>template ;
+
 : <main-dispatcher> ( -- responder )
     main-dispatcher new-dispatcher
-        <main-page> <layout-boilerplate>    ""      add-responder
-        "vocab:miaomfood/assets/" <static>  "assets" add-responder
+        "vocab:miaomfood/assets/" <static>  "assets"   add-responder
+        <main-page> <layout-boilerplate>    ""         add-responder
+        <banner>                            "banner"   add-responder
+        <campaign>                          "campaign" add-responder
 ;
 
 USING:

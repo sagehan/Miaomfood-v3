@@ -7,12 +7,12 @@
             <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <t:write-title />
-            <t:style t:include="vocab:miaomfood/styles/_base.css" />
             <t:style t:include="vocab:miaomfood/styles/themes/_defaults.css" />
+            <t:style t:include="vocab:miaomfood/styles/_base.css" />
             <t:write-style />
         </head>
 
-        <body> <t:call-next-template /> </body>
+        <body><t:call-next-template/></body>
         <t:write-script />
     </t:chloe>
 

@@ -5,7 +5,7 @@
 
 /**Layout
     */
-:has(> [style*="contents"] > header + main) {
+:has(> header + main) {
     --base-i: 0;
     /* TODO: optimize the following properties formula */
     --banner-inline-size: calc(100vh * 1/3);

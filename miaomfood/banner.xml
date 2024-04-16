@@ -1,0 +1,43 @@
+<?xml version='1.0' ?>
+<t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
+<div class="this.vcard" style="display:contents;">
+  <figure class="card--cover">
+    <img src="/assets/logo.svg" alt="logo"/>
+    <figcaption>name<small>description</small></figcaption>
+  </figure>
+  <figure>
+    <figcaption class="stamped">关注微信</figcaption>
+    <figure>
+      <img class="qrcode" src="/assets/QR-1.png" alt="喵姆餐厅微信:点餐、订单、售后"/>
+      <figcaption >
+        <p>miaomfood</p>
+        <small>点餐<span>&amp;</span>订单</small>
+      </figcaption>
+    </figure>
+    <figure>
+      <img class="qrcode" src="/assets/QR-2.png" alt="喵姆餐厅微信微信:教学、策划、商务"/>
+      <figcaption>
+        <p>pangmiao</p>
+        <small>策划<span>&amp;</span>商务</small>
+      </figcaption>
+    </figure>
+  </figure>
+  <figure>
+    <img src="/assets/location.png" alt="location map" />
+    <address>
+      <dl>
+        <dt class="icon__openingHours">开放时间</dt><dd>
+          <time datetime="">
+            {@html sullyOpeningHours(eateryInfo[':openingHours'])}
+            <!--TODO R6/{2015..2017}-WXX-02T11:00+08/T22:00+08-->
+          </time></dd>
+        <dt class="icon__telephone">订餐电话</dt><dd>{@html sullyPhoneNumber(eateryInfo[':telephone'])}</dd>
+        <dt class="icon__address">餐厅位置</dt><dd>
+          <span>:addressLocality</span>
+          <span>:streetAddress</span>
+        </dd>
+      </dl>
+    </address>
+  </figure>
+</div>
+</t:chloe>
