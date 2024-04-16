@@ -1,0 +1,68 @@
+<?xml version='1.0' ?>
+<t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
+<t:style  t:include="vocab:miaomfood/app.css" />
+<t:script t:include="vocab:miaomfood/htmx.min.js" />
+<header
+    id="VCARD"
+    hx-get="/banner"
+    hx-trigger="load">
+</header>
+<main>
+    <div
+        id="CAMPAIGN"
+        hx-get="/campaign"
+        >
+    </div>
+    <div
+        id="MENU"
+        hx-get="/menu"
+        >
+    </div>
+</main>
+<div role="tablist" aria-labelledby="tablist_controls">
+    <!--tabs group-->
+    <fieldset>
+        <legend id="tablist_controls">Tablist Widget for toggling the Shopping Cart and User Settings panels</legend>
+        <div
+            role="tab"
+            aria-selected="false"
+            aria-controls="CONSOLE"
+        >
+            <input
+                id="tablist_settings"
+                type="radio"
+                name="tab-grp"
+                value="tablist_settings"
+            />
+            <label for="tablist_settings" id="tab-1">设置</label>
+        </div>
+        <div
+            role="tab"
+            aria-selected="true"
+            aria-controls="CART"
+        >
+            <input
+                id="tablist_cart"
+                type="radio"
+                name="tab-grp"
+                value="tablist_cart"
+            />
+            <label for="tablist_cart" id="tab-2">订购单</label>
+        </div>
+    </fieldset>
+    <!--tabpanels-->
+    <div
+        role="tabpanel"
+        tabindex="0"
+        id="CONSOLE"
+        aria-labelledby="tab-1"
+    ></div><!--TODO: login & user settings-->
+    <div
+        role="tabpanel"
+        tabindex="0"
+        id="CART"
+        aria-labelledby="tab-2"
+    >Cart contents</div>
+</div>
+
+</t:chloe>
