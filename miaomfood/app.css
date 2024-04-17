@@ -110,7 +110,7 @@ main { display:contents; }
 
 /**Appearance
     */
-:has(> [style*="contents"] > header + main) {
+:has(> header + main) {
     color: var(--activity_bg);
     background-color: var(--page_bg);
     background-image: var(--showGrid, var(--grid));

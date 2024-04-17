@@ -1,0 +1,187 @@
+<?xml version='1.0' ?>
+<t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
+<dialog class="this.cart">
+	<h1>订购单</h1>
+
+	<form title="订购单" id="order_form">
+		<table role="grid">
+			<caption id="cart_cap" class="step__hd">
+				<h2>订购信息</h2>
+				<!--details>TODO: a11y</details-->
+			</caption>
+			<tfoot role="rowgroup">
+				<tr role="row">
+					<th role="rowheader" colspan="3">小费</th>
+					<td role="cell" class="numerical">3</td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="coupon-code">蜜语</label></th>
+					<td role="cell" colspan="2"><input
+						id="coupon-code" name="coupon-code"
+						type="text"
+						size="1"
+						oninput="this.parentNode.dataset.content = this.value"/></td>
+					<td role="cell" class="numerical">-3</td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader" colspan="3">总计</th>
+					<td role="cell" class="numerical">138</td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="comment">留言</label></th>
+					<td role="cell" colspan="3"><input
+						id="comment" name="comment"
+						type="text"
+						size="1"
+						oninput="this.parentNode.dataset.content = this.value" /></td>
+					<td role="cell"></td>
+				</tr>
+			</tfoot>
+			<tbody role="rowgroup">
+				<tr role="row"><th role="columnheader" scope="rowgroup" colspan="4" id="shopping-list">订购清单</th></tr>
+				<tr role="row">
+					<th role="columnheader" id="item_hd">餐品</th>
+					<th role="columnheader" id="price_hd">单价</th>
+					<th role="columnheader" id="qty_hd">数量</th>
+					<th role="columnheader" id="total_hd">金额</th>
+				</tr>
+				<tr role="row" class="h-item">
+					<td role="cell" headers="item_hd">土耳其烤鸡肉披萨</td>
+					<td role="cell" headers="price_hd" class="numerical">69</td>
+					<td role="cell" headers="qty_hd" class="qty numerical">2</td>
+					<td role="cell" headers="total_hd" class="sub-total numerical">138</td>
+				</tr>
+			</tbody>
+			<tbody role="rowgroup">
+				<tr role="row">
+					<th role="columnheader" scope="rowgroup" colspan="4">配送信息</th>
+				</tr>
+				<tr role="row">
+					<th role="rowheader">
+						<label for="preorder-date">日期</label>
+					</th>
+					<td role="cell">
+						<input
+							type="text"
+							id="preorder-date" name="preorder-date"
+							size="2"
+							aria-describedby="date_confirm"
+							oninput="this.parentNode.dataset.content = this.value" />
+						<!--TODO: a11y-->
+						<output
+							id="date_confirm"
+							for="preorder-date"
+							aria-live="assertive">
+							<small>您输入的日期为：<br/><span class="numerical">20</span><span class="numerical">24</span>年<span class="numerical">1</span>月<span class="numerical">12</span>日</small></output>
+					</td>
+					<td role="cell"></td>
+				</tr>				
+				<tr role="row">
+					<th role="rowheader">
+						<label for="preorder-time">时间</label>
+					</th>
+					<td role="cell">
+						<input
+							type="time"
+							id="preorder-time" name="preorder-time"
+							size="4"
+							oninput="this.parentNode.dataset.content = this.value" />
+					</td>
+					<td role="cell"></td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="addressLocality">城市</label></th>
+					<td role="cell" colspan="2"><input
+						value="乌鲁木齐" disabled="disabled" size="4" list="cities" />
+						<datalist id="cities">
+							<select id="addressLocality" name="addressLocality">
+								<option value="乌鲁木齐" selected="selected">乌鲁木齐</option>
+							</select>
+						</datalist>
+					</td>
+					<td role="cell"></td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="customer-street">街区</label></th>
+					<td role="cell" colspan="2"><input
+						id="customer-street" name="customer-street"
+						type="text"						
+						required="required"
+						size="1"
+						oninput="this.parentNode.dataset.content = this.value" />
+					</td>
+					<td role="cell"></td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="customer-residential">建筑</label></th><td role="cell" colspan="2"><input
+						id="customer-residential" name="customer-residential"
+						type="text"
+						required="required"
+						size="1"
+						oninput="this.parentNode.dataset.content = this.value" /></td><td role="cell"></td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="customer-room">房号</label></th><td role="cell" colspan="2"><input
+						id="customer-room" name="customer-room"
+						type="text"
+						size="1"
+						oninput="this.parentNode.dataset.content = this.value" /></td><td role="cell"></td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="customer-telephone">电话</label></th><td role="cell" colspan="2"><input
+						id="customer-telephone" name="customer-telephone"
+						aria-describedby="tel_hint"
+						type="tel"
+						required="required"
+						minlength="7"
+						inputmode="tel" autocomplete="tel"
+						pattern="^1[3|5|7|8][0-9]{9}$" title="须为11位手机号或7位乌市座机号!"
+						size="7"
+						oninput="this.parentNode.dataset.content = this.value" />
+						<output><small>须为<span class="numerical">11</span>位手机号，<br/>或7位乌市座机号！</small></output></td>
+						<td role="cell"></td>
+				</tr>
+				<tr role="row">
+					<th role="rowheader"><label for="customer-name">称呼</label></th><td role="cell" colspan="2"><input
+						id="customer-name" name="customer-name"
+						type="text"
+						required="required"
+						autocomplete="name"
+						spellcheck="false"
+						pattern="^[a-zA-Z\u4e00-\u9fa5]{2,8}$" title="须为字数二至八的中文或英文!"
+						size="4"
+						oninput="this.parentNode.dataset.content = this.value" /></td><td role="cell"></td>
+				</tr>
+			</tbody>
+			<tbody role="rowgroup">
+				<tr role="row"><th role="columnheader" colspan="4" scope="rowgroup" id="payment">付款方式</th></tr>
+				<tr role="row">
+					<td role="cell"><input
+						id="cash-payment" name="payment"
+						aria-labelledby="payment cash-label"
+						value="Cash"
+						type="radio"
+						required="required"
+						checked="checked"
+						/><label for="cash-payment" id="cash-label">现金到付</label></td>
+					<td role="cell"><input
+						id="alipay-payment" name="payment"
+						aria-labelledby="payment alipay-label"
+						value="alipay_wap"
+						type="radio"
+						required="required"
+						/><label for="alipay-payment" id="alipay-label">支付宝</label></td>
+					<td role="cell"><input
+						id="wechat-payment" name="payment"
+						aria-labelledby="payment wechat-label"
+						value="wx_pub"
+						type="radio"
+						required="required"
+						/><label for="wechat-payment" id="wechat-label">微信支付</label></td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="submit">提交订单</button>
+	</form>
+</dialog>
+</t:chloe>

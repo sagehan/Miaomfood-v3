@@ -9,7 +9,7 @@ USING:
     html.templates.chloe
     furnace.boilerplate
     furnace.actions
- ;
+;
 
 TUPLE: main-dispatcher < dispatcher ;
 
@@ -25,10 +25,14 @@ TUPLE: main-dispatcher < dispatcher ;
 : <campaign> ( -- responder )
     <page-action> { main-dispatcher "campaign" } >>template ;
 
+: <cart> ( -- responder )
+    <page-action> { main-dispatcher "cart" } >>template ;
+
 : <main-dispatcher> ( -- responder )
     main-dispatcher new-dispatcher
         "vocab:miaomfood/assets/" <static>  "assets"   add-responder
         <main-page> <layout-boilerplate>    ""         add-responder
+        <cart>                              "cart"     add-responder
         <banner>                            "banner"   add-responder
         <campaign>                          "campaign" add-responder
 ;
@@ -38,7 +42,7 @@ USING:
     io.servers
     http.server
     namespaces
- ;
+;
 
 : run-test-webapp ( -- )
     t development? set-global

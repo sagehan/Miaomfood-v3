@@ -1,5 +1,6 @@
 <?xml version='1.0' ?>
-<t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
+<t:chloe  xmlns:t="http://factorcode.org/chloe/1.0">
+<t:style  t:include="vocab:miaomfood/cart.css" />
 <t:style  t:include="vocab:miaomfood/campaign.css" />
 <t:style  t:include="vocab:miaomfood/banner.css" />
 <t:style  t:include="vocab:miaomfood/app.css" />
@@ -63,7 +64,9 @@
         tabindex="0"
         id="CART"
         aria-labelledby="tab-2"
-        >Cart contents</div>
+        hx-get="/cart"
+        hx-trigger="load delay:3000ms"
+        ></div>
 </div>
 
 </t:chloe>
