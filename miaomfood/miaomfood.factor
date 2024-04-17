@@ -9,7 +9,7 @@ USING:
     html.templates.chloe
     furnace.boilerplate
     furnace.actions
-;
+ ;
 
 TUPLE: main-dispatcher < dispatcher ;
 
@@ -42,7 +42,7 @@ USING:
     io.servers
     http.server
     namespaces
-;
+ ;
 
 : run-test-webapp ( -- )
     t development? set-global
