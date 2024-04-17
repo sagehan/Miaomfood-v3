@@ -4,7 +4,7 @@
 <t:style  t:include="vocab:miaomfood/campaign.css" />
 <t:style  t:include="vocab:miaomfood/banner.css" />
 <t:style  t:include="vocab:miaomfood/app.css" />
-<t:script t:include="vocab:miaomfood/htmx.min.js" />
+<t:script t:include="vocab:miaomfood/htmx.js" />
 <header
     id="VCARD"
     hx-get="/banner"
