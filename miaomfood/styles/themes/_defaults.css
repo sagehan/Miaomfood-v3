@@ -10,7 +10,7 @@
 
 :root {
     /* Layout
-    */
+     */
     --_:var(--_)    ; --ON:var(--_); --OFF:var(--_,); /*Cyclic Toggles*/
     --debug         : var(--OFF);
     --showGrid      : var(--OFF);
@@ -27,12 +27,12 @@
     --grid-columns  : 12;
 
     /* Typesetting
-    */
+     */
     --leading       : calc(1em + var(--s1, 1.5rem));
     --measure       : 60ch;
     --letter-spacing: .35em;
     --stamp-size    : 2lh;
-    /* --writing-mode  : vertical-rl; */
+    --writing-mode  : vertical-rl;
     /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
     --s-2           : clamp(0.7813rem,  0.7747rem + 0.0326vb, 0.8rem);
     --s-1           : clamp(0.9375rem,  0.9158rem + 0.1087vb, 1rem);
@@ -44,7 +44,7 @@
     --s5            : clamp(2.7994rem,  2.4461rem + 1.7663vb, 3.815rem);
 /*}
     /* Appearance
-    */
+     */
 /*@container style(--appearance: default) { :root { */
     --grid_cl       : #366;
     --dark          : oklch(32%     0       0);

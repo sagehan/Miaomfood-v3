@@ -1,10 +1,16 @@
+@import "styles/_base.css";
+@import "styles/themes/_defaults.css";
+@import "banner.css";
+@import "campaign.css";
+@import "cart.css";
+
 /**Typesetting
-    */
+ */
 [role="tab"] { font-size:var(--s1); font-weight:bold; letter-spacing:0.2rem; }
 [role="tab"] label { text-wrap:nowrap; }
 
 /**Layout
-    */
+ */
 :has(> header + main) {
     --base-i: 0;
     /* TODO: optimize the following properties formula */
@@ -102,14 +108,12 @@ main { display:contents; }
     [type="radio"] { display:var(--display); visibility:var(--visibility); }
 }
 
-/* [role="tab"] label:has([type="radio"]:checked) + [role="tabpanel"] {} */
-
-@container style(--SW__SCREEN_XS) {
+/* @container style(--SW__SCREEN_XS) {
     #VCARD {position:static;}
-}
+} */
 
 /**Appearance
-    */
+ */
 :has(> header + main) {
     color: var(--activity_bg);
     background-color: var(--page_bg);
@@ -182,8 +186,8 @@ figure > img {
 [role="tabpanel"] > * { border-radius:var(--border-radius); }
 
 /**Animation
-*/
-@keyframes -global-expand { from {translate:var(--translate2);} to {translate:var(--translate1);} }
+ */
+@keyframes expand { from {translate:var(--translate2);} to {translate:var(--translate1);} }
 
 #MENU {
     animation: expand linear both;

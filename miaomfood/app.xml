@@ -1,9 +1,5 @@
 <?xml version='1.0' ?>
 <t:chloe  xmlns:t="http://factorcode.org/chloe/1.0">
-<t:style  t:include="vocab:miaomfood/cart.css" />
-<t:style  t:include="vocab:miaomfood/campaign.css" />
-<t:style  t:include="vocab:miaomfood/banner.css" />
-<t:style  t:include="vocab:miaomfood/app.css" />
 <t:script t:include="vocab:miaomfood/htmx.js" />
 <header
     id="VCARD"
