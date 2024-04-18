@@ -25,6 +25,9 @@ TUPLE: main-dispatcher < dispatcher ;
 : <campaign> ( -- responder )
     <page-action> { main-dispatcher "campaign" } >>template ;
 
+: <menu> ( -- responder )
+    <page-action> { main-dispatcher "menu" } >>template ;
+
 : <cart> ( -- responder )
     <page-action> { main-dispatcher "cart" } >>template ;
 
@@ -33,6 +36,7 @@ TUPLE: main-dispatcher < dispatcher ;
         "vocab:miaomfood/assets/" <static>  "assets"   add-responder
         <main-page> <layout-boilerplate>    ""         add-responder
         <cart>                              "cart"     add-responder
+        <menu>                              "menu"     add-responder
         <banner>                            "banner"   add-responder
         <campaign>                          "campaign" add-responder
 ;

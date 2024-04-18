@@ -15,6 +15,7 @@
     <div
         id="MENU"
         hx-get="/menu"
+        hx-trigger="load"
         ></div>
 </main>
 <div role="tablist" aria-labelledby="tablist_controls">

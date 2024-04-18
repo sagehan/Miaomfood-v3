@@ -1,0 +1,43 @@
+<?xml version='1.0' ?>
+<t:chloe  xmlns:t="http://factorcode.org/chloe/1.0">
+<div class="this.menu" style="display:contents">
+    <ul>
+        <t:bind-each t:name="hasMenuSection">
+        <li id="@identifier" class="sections">
+            <h1><t:label t:name="name" /></h1>
+            <ul class="submenu">
+                <t:bind-each t:name="hasMenuSection">
+                <li id="@identifier" class="subsection">
+                    <h1><t:label t:name="name" /></h1>
+                    <ul role="group">
+                        <t:bind-each t:name="hasMenuItem">
+                        <li>
+                            <article>
+                                <h2><t:label t:name="name" /></h2>
+                                <ul class="spec-tag">
+                                    <t:bind-each t:name="offers">
+                                    <li class="p-spec">
+                                        <small class="spec-price"><t:label t:name="price" /></small>
+                                        <t:if t:value="additionalType">
+                                        <small><t:label t:name="additionalType" /></small></t:if>
+                                    </li>
+                                    </t:bind-each>
+                                </ul>
+                                <t:if t:value="description">
+                                <small class="e-description"><t:label t:name="description" /></small></t:if>
+                                <t:if t:value="image">
+                                <figure class="u-photo">
+                                    <img src="@image" alt="@image" />
+                                </figure></t:if>
+                            </article>
+                        </li>
+                        </t:bind-each>
+                    </ul>
+                </li>
+                </t:bind-each>
+            </ul>    
+        </li>
+        </t:bind-each>
+    </ul>
+</div>
+</t:chloe>
