@@ -7,28 +7,47 @@ USING:
     http.server.dispatchers
     http.server.static
     html.templates.chloe
+    html.forms
     furnace.boilerplate
     furnace.actions
  ;
 
 TUPLE: main-dispatcher < dispatcher ;
+TUPLE: address
+    { addressLocality initial: "乌鲁木齐" }
+    { streetAddress   initial: "高新街桂林路东四巷锦林二巷8号1楼" }
+;
+TUPLE: eatery
+    { name initial: "喵姆餐厅" }
+    { description initial: "好多好多的芝士和肉\s给你认真生活的力量" }
+    { logo initial: "/assets/logo.svg" }
+    { telephone initial: "+8618123456789" }
+    { openingHours initial: "Tu––Su\s11:00––22:00" }
+;
 
 : <layout-boilerplate> ( responder -- responder' )
     <boilerplate> { main-dispatcher "page" } >>template ;
 
-: <main-page> ( -- responder )
+: <main-page> ( -- action )
     <page-action> { main-dispatcher "app" } >>template ;
 
-: <banner> ( -- responder )
-    <page-action> { main-dispatcher "banner" } >>template ;
+: <banner> ( -- action )
+    <page-action>
+        [ 
+            T{ eatery } from-object
+            "address" [
+                T{ address } from-object
+            ] nest-form
+        ]  >>init
+        { main-dispatcher "banner" } >>template ;
 
-: <campaign> ( -- responder )
+: <campaign> ( -- action )
     <page-action> { main-dispatcher "campaign" } >>template ;
 
-: <menu> ( -- responder )
+: <menu> ( -- action )
     <page-action> { main-dispatcher "menu" } >>template ;
 
-: <cart> ( -- responder )
+: <cart> ( -- action )
     <page-action> { main-dispatcher "cart" } >>template ;
 
 : <main-dispatcher> ( -- responder )

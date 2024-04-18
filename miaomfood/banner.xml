@@ -2,8 +2,8 @@
 <t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
 <div class="this.vcard" style="display:contents;">
   <figure class="card--cover">
-    <img src="/assets/logo.svg" alt="logo"/>
-    <figcaption>name<small>description</small></figcaption>
+    <img src="@logo" alt="logo"/>
+    <figcaption><t:label t:name="name" /><small><t:label t:name="description" /></small></figcaption>
   </figure>
   <figure>
     <figcaption class="stamped">关注微信</figcaption>
@@ -26,15 +26,17 @@
     <img src="/assets/location.png" alt="location map" />
     <address>
       <dl>
-        <dt class="icon__openingHours">开放时间</dt><dd>
-          <time datetime="">
-            {@html sullyOpeningHours(eateryInfo[':openingHours'])}
+        <dt class="icon__openingHours">开放时间</dt>
+          <dd><time datetime="">
+            <t:label t:name="openingHours" />
             <!--TODO R6/{2015..2017}-WXX-02T11:00+08/T22:00+08-->
           </time></dd>
-        <dt class="icon__telephone">订餐电话</dt><dd>{@html sullyPhoneNumber(eateryInfo[':telephone'])}</dd>
+        <dt class="icon__telephone">订餐电话</dt><dd><t:label t:name="telephone" /></dd>
         <dt class="icon__address">餐厅位置</dt><dd>
-          <span>:addressLocality</span>
-          <span>:streetAddress</span>
+          <t:bind t:name="address">
+          <span><t:label t:name="addressLocality" /></span>
+          <span><t:label t:name="streetAddress" /></span>
+          </t:bind>
         </dd>
       </dl>
     </address>
