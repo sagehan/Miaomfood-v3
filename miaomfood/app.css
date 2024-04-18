@@ -1,9 +1,3 @@
-@import "styles/_base.css";
-@import "styles/themes/_defaults.css";
-@import "banner.css";
-@import "campaign.css";
-@import "cart.css";
-
 /**Typesetting
  */
 [role="tab"] { font-size:var(--s1); font-weight:bold; letter-spacing:0.2rem; }
@@ -59,6 +53,9 @@ figure {
     margin-inline-end: clamp(var(--banner-inline-size) * -3, var(--bp_xs) * -99999, 0px);
     translate: clamp(0px, var(--bp_xs) * 99999, var(--main-block-size) * .5);
 }
+@container not style(--SW__SCREEN_XS: 0px) {
+    #VCARD {position:static;}
+}
 
 main { display:contents; }
 
@@ -107,10 +104,6 @@ main { display:contents; }
     label { position:relative; z-index:1; display: block;}
     [type="radio"] { display:var(--display); visibility:var(--visibility); }
 }
-
-/* @container style(--SW__SCREEN_XS) {
-    #VCARD {position:static;}
-} */
 
 /**Appearance
  */
