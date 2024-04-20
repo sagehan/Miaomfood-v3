@@ -1,18 +1,8 @@
 ! Copyright (C) 2024 Sage Han.
 ! See https://factorcode.org/license.txt for BSD license.
-USING: accessors kernel io.servers ;
+USING: accessors kernel ;
 IN: miaomfood
 
-USING:
-    http.server.dispatchers
-    http.server.static
-    html.templates.chloe
-    html.forms
-    furnace.boilerplate
-    furnace.actions
- ;
-
-TUPLE: main-dispatcher < dispatcher ;
 TUPLE: address
     { addressLocality initial: "乌鲁木齐" }
     { streetAddress   initial: "高新街桂林路东四巷锦林二巷8号1楼" }
@@ -24,6 +14,31 @@ TUPLE: eatery
     { telephone initial: "+8618123456789" }
     { openingHours initial: "Tu––Su\s11:00––22:00" }
 ;
+
+USE: urls 
+: query-url ( query -- url )
+    URL" http://localhost:3000/sparql" swap
+        "query" set-query-param ;
+
+USING: http http.client ;
+: json-request ( url -- request )
+    <get-request> "application/ld+json" "accept" set-header ;
+
+USING: http.client io.encodings.utf8 io.encodings.string json ;
+: sparql-query ( query -- results )
+    query-url json-request http-request nip utf8 decode json> ;
+
+USE: classes.tuple
+: <eatery> ( -- eatery )
+    "PREFIX : <http://schema.org/>
+        CONSTRUCT { ?s ?p ?o } WHERE {
+            [ :mainEntity ?s ]. ?s :name \"喵姆餐厅\"@zh; ?p ?o. }"
+    sparql-query ; ! TODO: figure out how to get compact JSON-LD from SPARQL endpoint ;
+
+USING: http.server.dispatchers http.server.static html.templates.chloe
+    html.forms furnace.boilerplate furnace.actions ;
+
+TUPLE: main-dispatcher < dispatcher ;
 
 : <layout-boilerplate> ( responder -- responder' )
     <boilerplate> { main-dispatcher "page" } >>template ;
@@ -60,13 +75,7 @@ TUPLE: eatery
         <campaign>                          "campaign" add-responder
 ;
 
-USING:
-    io.sockets.secure.debug
-    io.servers
-    http.server
-    namespaces
- ;
-
+USING: namespaces http.server io.sockets.secure.debug io.servers ;
 : run-test-webapp ( -- )
     t development? set-global
     <main-dispatcher> main-responder set-global
@@ -74,7 +83,6 @@ USING:
         <test-secure-config> >>secure-config
         8431 >>secure
         8081 >>insecure
-    start-server drop 
-;
+    start-server drop ;
 
 MAIN: run-test-webapp
