@@ -35,6 +35,8 @@ USE: classes.tuple
         [ :mainEntity ?s ]. ?s :name \"喵姆餐厅\"@zh; ?p ?o. }"
     sparql-query ;  ! TODO: figure out how to get compact JSON-LD from SPARQL endpoint ;
                     ! https://github.com/comunica/comunica/discussions/894#discussioncomment-3869502
+                    ! https://github.com/comunica/comunica/blob/9daec7da03e159726559720acd0221881533d179/packages/actor-sparql-parse-algebra/components/Actor/SparqlParse/Algebra.jsonld
+                    ! https://github.com/comunica/comunica/blob/2a27e571b7180fcdb6bef6f27ee0f12afb8766d6/packages/actor-sparql-parse-algebra/components/ActorSparqlParseAlgebra.jsonld
 
 USING: http.server.dispatchers http.server.static html.templates.chloe
     html.forms furnace.boilerplate furnace.actions ;

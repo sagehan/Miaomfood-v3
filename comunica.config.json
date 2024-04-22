@@ -3,6 +3,7 @@
     "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/config-query-sparql/^3.0.0/components/context.jsonld",
     "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/runner/^3.0.0/components/context.jsonld",
 
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-query-parse-sparql/^3.0.0/components/context.jsonld",
     "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-rdf-parse-n3/^3.0.0/components/context.jsonld",
     "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-rdf-serialize-n3/^3.0.0/components/context.jsonld",
     "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-query-result-serialize-rdf/^3.0.0/components/context.jsonld",
@@ -55,7 +56,7 @@
     "ccqs:config/query-operation/actors/query/path-zero-or-one.json",
 
     "ccqs:config/query-operation/mediators.json",
-    "ccqs:config/query-parse/actors.json",
+
     "ccqs:config/query-parse/mediators.json",
     "ccqs:config/query-process/actors.json",
     "ccqs:config/query-process/mediators.json",
@@ -100,6 +101,10 @@
   "@id": "urn:comunica:default:Runner",
   "@type": "Runner",
   "actors": [
+    {
+      "@id": "urn:comunica:default:query-parse/actors#sparql",
+      "@type": "ActorQueryParseSparql"
+    },
     {
       "@id": "urn:comunica:default:rdf-parse/actors#n3",
       "@type": "ActorRdfParseN3",
