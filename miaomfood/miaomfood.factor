@@ -22,7 +22,7 @@ USE: urls
 
 USING: http http.client ;
 : json-request ( url -- request )
-    <get-request> "application/ld+json" "accept" set-header ;
+    <get-request> "application/json" "accept" set-header ;
 
 USING: http.client io.encodings.utf8 io.encodings.string json ;
 : sparql-query ( query -- results )
@@ -31,9 +31,10 @@ USING: http.client io.encodings.utf8 io.encodings.string json ;
 USE: classes.tuple
 : <eatery> ( -- eatery )
     "PREFIX : <http://schema.org/>
-        CONSTRUCT { ?s ?p ?o } WHERE {
-            [ :mainEntity ?s ]. ?s :name \"喵姆餐厅\"@zh; ?p ?o. }"
-    sparql-query ; ! TODO: figure out how to get compact JSON-LD from SPARQL endpoint ;
+    CONSTRUCT { ?s ?p ?o } WHERE {
+        [ :mainEntity ?s ]. ?s :name \"喵姆餐厅\"@zh; ?p ?o. }"
+    sparql-query ;  ! TODO: figure out how to get compact JSON-LD from SPARQL endpoint ;
+                    ! https://github.com/comunica/comunica/discussions/894#discussioncomment-3869502
 
 USING: http.server.dispatchers http.server.static html.templates.chloe
     html.forms furnace.boilerplate furnace.actions ;
@@ -50,10 +51,8 @@ TUPLE: main-dispatcher < dispatcher ;
     <page-action>
         [ 
             T{ eatery } from-object
-            "address" [
-                T{ address } from-object
-            ] nest-form
-        ]  >>init
+            "address" [ T{ address } from-object ] nest-form
+        ] >>init
         { main-dispatcher "banner" } >>template ;
 
 : <campaign> ( -- action )
