@@ -1,6 +1,6 @@
 <?xml version='1.0' ?>
 <t:chloe  xmlns:t="http://factorcode.org/chloe/1.0">
-<t:script t:include="vocab:miaomfood/htmx.js" />
+<t:script t:include="vocab:miaomfood/build/app.js" />
 <header
     id="VCARD"
     hx-get="/banner"

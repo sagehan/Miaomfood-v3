@@ -1,7 +1,15 @@
 {
   "dependencies": {
+    "gsap": "^3.12.5",
+    "htmx.org": "^1.9.12",
+    "lenis": "^1.0.44",
+    "nanostores": "^0.10.3"
+  },
+  "devDependencies": {
     "@comunica/query-sparql-file": "^3.0.3",
     "lightningcss-cli": "^1.24.1",
+    "prettier": "3.2.5",
+    "typescript": "^5.4.5",
     "uglify-js": "^3.17.4"
   }
 }

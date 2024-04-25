@@ -1,14 +1,14 @@
 #-------------------------------------------
 # Variables
 #-------------------------------------------
-.DEFAULT_GOAL   := init
-export PATH    	:= ${PATH}:${src_dir}/node_modules/.bin
-SHELL          	:= env "PATH=${PATH}" /bin/bash
+.DEFAULT_GOAL	:= init
+export PATH		:= ${PATH}:${src_dir}/node_modules/.bin
+SHELL			:= env "PATH=${PATH}" /bin/bash
 FINDER 			:= 
 BUN 			:= $(shell which bun)
 BUNX 			:= $(shell which bunx)
 MINIFIER		:= $(BUNX) uglifyjs
-CSS_TRANSPILER  := $(BUNX) --bun lightningcss
+CSS_TRANSPILER	:= $(BUNX) --bun lightningcss
 root_dir 		:= $(dir $(realpath $(lastword ${MAKEFILE_LIST})))
 src_dir			:= ${root_dir}/miaomfood
 lib_dir 		:= ${src_dir}/lib
@@ -24,7 +24,7 @@ endif
 #-------------------------------------------
 # Targets
 #-------------------------------------------
-help::
+hel%:
 	${verbose} printf "%s\n" \
 		"Miaomfood app demo (WIP) build guide." \
 		"Copyright (c) 2023-2024 Sage Han <zongshian@outlook.com>" \
@@ -40,7 +40,6 @@ help::
 		"  dev           Run devolopement" \
 		"  app           Compile the project" \
 		"  help          Display this help and exit"
-.PHONY: help
 
 all: init bun deps app run app
 .PHONY: all
@@ -55,11 +54,11 @@ init:
 dev: ; @# TODO
 .PHONY: dev
 
-build: ; @# TODO $(CSS_TRANSPILER) --minify --targets --output-dir ${OUTPUT_DIR}
-.PHONY: build
+buil%: # TODO $(CSS_TRANSPILER) --minify --targets --output-dir ${OUTPUT_DIR}
+	$(BUN) build ${src_dir}/app.js --outdir ${src_dir}/build
+	cp ${src_dir}/service-worker.js ${src_dir}/assets/service-worker.js
 
-deps: .tmp/.deps.sentinel
-.PHONY: deps
+dep%: .tmp/.deps.sentinel
 
 run:
 	export comunica_config=${comunica_config}
@@ -69,13 +68,14 @@ run:
 app: ; @# TODO
 .PHONY: app
 
-clean: ; @# TODO
-.PHONY: clean
+clea%: ; @# TODO
+	rm ${src_dir}/assets/service-worker.js
+	rm -r ${src_dir}/build/
 
 #-------------------------------------------
 # Rules
 #-------------------------------------------
-${src_dir}/out/page.min.css: ${css_src}
+${build_dir}/page.min.css: ${css_src}
 	$(CSS_TRANSPILER) --bundle ${src_dir}/page.css -o $@
 
 .tmp/.deps.sentinel: package.json
@@ -123,7 +123,9 @@ endef
 # 	INSTALL =  curl -fsSL https://bun.sh/install | bash
 # endif
 
-FINDER = $(shell which ag ack rg fd find | grep -m1 bin | awk -F '/' '{print $$(NF)}' | xargs -I {} sh -c '<<< $$(finder-friends) grep -e "$$1"' sh {} )
+FINDER = $(shell \
+	which ag ack rg fd find | grep -m1 bin | awk -F '/' '{print $$(NF)}' | \
+	xargs -I {} sh -c '<<< $$(finder-friends) grep -e "$$1"' sh {} )
 
 define finder-friends
 ag -g .css$$

@@ -1,2 +1,3 @@
 *.xml linguist-language=HTML linguist-detectable
-htmx.js linguist-documentation
+lib/htmx.js linguist-documentation
+lib/lenis.js linguist-documentation

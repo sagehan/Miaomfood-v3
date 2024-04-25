@@ -8,6 +8,8 @@
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" href="/assets/page.css" />
             <t:write-style />
+            <!-- <t:script t:include="vocab:miaomfood/service-worker.js" type="text/js-worker" /> -->
+            <!-- <t:write-script /> --><!--TODO: extend chloe to support 'type' attribute -->
         </head>
 
         <body><t:call-next-template/></body>

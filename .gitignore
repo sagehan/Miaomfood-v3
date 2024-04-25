@@ -1,5 +1,6 @@
 .DS_Store
 */out/
+*/build/
 */.tmp/
 node_modules
 */assets/htmx.min.js
@@ -7,4 +8,5 @@ node_modules
 */assets/page.css.map
 */assets/page.min.css
 */assets/page.min.css.map
+*/assets/service-worker.js
 componentsjs-error-state.json
