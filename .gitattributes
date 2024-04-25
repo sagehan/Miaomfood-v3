@@ -1,3 +1,3 @@
 *.xml linguist-language=HTML linguist-detectable
-lib/htmx.js linguist-documentation
-lib/lenis.js linguist-documentation
+miaomfood/lib/htmx.js linguist-documentation
+miaomfood/lib/lenis.js linguist-documentation
